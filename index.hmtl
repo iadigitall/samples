@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EFX Pack — Samples Profissionais para Músicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --bg:      #080808;
+  --s1:      #0E0E0E;
+  --s2:      #131313;
+  --line:    #1C1C1C;
+  --line2:   #252525;
+  --text:    #D8D8D2;
+  --muted:   #5E5E58;
+  --faint:   #141414;
+  --white:   #F2F2EE;
+  --lime:    #C6FF00;
+  --red:     #FF3B2F;
+  --r:       6px;
+  --sans:    'DM Sans', sans-serif;
+  --serif:   'Fraunces', Georgia, serif;
+}
+
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 40px}
+
+/* ── LABEL ── */
+.lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+/* ── ANNOUNCE ── */
+.bar{background:var(--lime);color:#000;text-align:center;padding:11px 20px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.bar b{margin:0 10px;opacity:.45}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:300;border-bottom:1px solid var(--line);background:rgba(8,8,8,.97);backdrop-filter:blur(24px)}
+.hinner{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:var(--sans);font-weight:700;font-size:16px;letter-spacing:.16em;color:var(--white);text-transform:uppercase}
+.logo-dot{color:var(--lime)}
+nav{display:flex;align-items:center;gap:28px}
+nav a{font-size:13px;color:var(--muted);letter-spacing:.04em;transition:color .2s}
+nav a:hover{color:var(--white)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--r);cursor:pointer;border:none;transition:all .18s;text-decoration:none}
+.bp{background:var(--lime);color:#000;padding:13px 28px}
+.bp:hover{background:#d4ff26;transform:translateY(-1px)}
+.bg{background:transparent;color:var(--text);border:1px solid var(--line2);padding:12px 22px}
+.bg:hover{border-color:#3a3a3a}
+
+/* ── HERO ── */
+.hero{padding:108px 0 88px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero-grid{background:
+  linear-gradient(var(--line) 1px,transparent 1px),
+  linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:68px 68px;
+  position:absolute;inset:0;
+  mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,black 0%,transparent 100%);
+  opacity:.35}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.pill{background:var(--faint);border:1px solid var(--line2);padding:5px 12px;border-radius:100px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dot{width:7px;height:7px;background:var(--lime);border-radius:50%;animation:blink 2.2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
+
+h1{font-family:var(--serif);font-size:clamp(46px,5.2vw,76px);line-height:1.04;color:var(--white);font-weight:300;letter-spacing:-.025em;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--lime)}
+h1 strong{font-weight:700}
+
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.8;max-width:430px;margin-bottom:38px}
+.hero-sub b{color:var(--text)}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+
+.hero-trust{display:flex;gap:28px;padding-top:36px;border-top:1px solid var(--line)}
+.trust-n{font-size:24px;font-weight:700;color:var(--white);line-height:1;letter-spacing:-.02em}
+.trust-l{font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+/* ── PACK MOCKUP ── */
+.mockup{position:relative}
+.float-pill{position:absolute;top:-16px;right:12px;background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:10px 16px;font-size:11px;color:var(--muted);line-height:1.5;z-index:2}
+.float-pill strong{color:var(--white);font-size:14px;display:block}
+
+.pack-box{background:var(--s1);border:1px solid var(--line2);border-radius:14px;overflow:hidden}
+.pb-top{background:var(--faint);border-bottom:1px solid var(--line);padding:16px 22px;display:flex;align-items:center;justify-content:space-between}
+.pb-name{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.pb-badge{background:var(--lime);color:#000;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+
+.wave-area{padding:28px 22px 20px;display:flex;align-items:center;gap:2px;height:108px}
+.wb{flex:1;border-radius:1.5px;background:var(--line2);animation:wa var(--d) ease-in-out infinite alternate}
+.wb.on{background:var(--lime)}.wb.lo{background:rgba(198,255,0,.28)}
+@keyframes wa{from{height:var(--a)}to{height:var(--b)}}
+
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 22px 20px}
+.cat-row{background:var(--faint);border:1px solid var(--line);border-radius:5px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center}
+.cat-n{font-size:12px;color:var(--text);font-weight:500}
+.cat-c{font-size:11px;color:var(--muted)}
+
+.pb-foot{border-top:1px solid var(--line);padding:15px 22px;display:flex;justify-content:space-between}
+.pb-fmt{font-size:11px;color:var(--muted)}
+.pb-tot{font-size:11px;color:var(--lime);font-weight:600}
+
+/* ── TICKER ── */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;overflow:hidden;background:var(--faint)}
+.t-track{display:flex;width:max-content;animation:tick 32s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.t-item{display:flex;align-items:center;gap:0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:0 36px;border-right:1px solid var(--line)}
+.t-item b{color:var(--text);margin-right:7px}
+
+/* ── SECTIONS ── */
+section{padding:96px 0;border-bottom:1px solid var(--line)}
+.sh{margin-bottom:56px}
+.sh h2{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--white);line-height:1.08;letter-spacing:-.022em;margin-top:12px}
+.sh h2 em{font-style:italic}
+.sh p{color:var(--muted);font-size:15px;max-width:480px;margin-top:16px;line-height:1.8}
+
+/* ── PAIN SECTION ── */
+.pain-section{background:var(--s1)}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pain-cell{background:var(--bg);padding:36px 32px}
+.pain-cell:hover{background:var(--s2)}
+.pain-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:16px;font-weight:500}
+.pain-title{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--white);line-height:1.3;margin-bottom:12px}
+.pain-body{font-size:13px;color:var(--muted);line-height:1.75}
+.pain-body b{color:var(--text)}
+
+/* ── BEFORE / AFTER ── */
+.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ba-col{padding:40px 36px}
+.ba-col.before{background:var(--faint);border-right:1px solid var(--line)}
+.ba-col.after{background:var(--bg)}
+.ba-tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin-bottom:24px;display:block}
+.ba-col.before .ba-tag{color:var(--muted)}
+.ba-col.after .ba-tag{color:var(--lime)}
+.ba-list{display:flex;flex-direction:column;gap:14px}
+.ba-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.6}
+.ba-col.before .ba-item{color:var(--muted)}
+.ba-col.after .ba-item{color:var(--text)}
+.ba-mark{flex-shrink:0;margin-top:2px;font-size:13px;font-weight:700}
+.ba-col.before .ba-mark{color:var(--muted)}
+.ba-col.after .ba-mark{color:var(--lime)}
+
+/* ── WHAT'S INSIDE ── */
+.ct-wrap{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ct-head{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;padding:12px 28px;border-bottom:1px solid var(--line);background:var(--faint)}
+.ct-col{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.ct-row{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;padding:20px 28px;border-bottom:1px solid var(--line);align-items:center;transition:background .15s}
+.ct-row:last-child{border-bottom:none}
+.ct-row:hover{background:var(--faint)}
+.ct-name{font-size:14px;color:var(--white);font-weight:500}
+.ct-desc{font-size:12px;color:var(--muted);margin-top:2px}
+.ct-num{font-size:14px;color:var(--text)}
+.ct-fmt{font-size:11px;color:var(--muted)}
+.ct-tag{display:inline-block;border:1px solid var(--line2);padding:3px 9px;border-radius:4px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ct-tag.h{border-color:rgba(198,255,0,.3);color:var(--lime)}
+.ct-tag.n{border-color:rgba(255,59,48,.3);color:var(--red)}
+
+/* ── HOW IT WORKS ── */
+.hw-section{background:var(--s1)}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.hw-cell{background:var(--bg);padding:40px 32px;transition:background .2s}
+.hw-cell:hover{background:var(--faint)}
+.hw-step{font-family:var(--serif);font-size:56px;font-weight:300;color:var(--line2);line-height:1;margin-bottom:20px;letter-spacing:-.02em}
+.hw-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:10px}
+.hw-body{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* ── SPECS ── */
+.specs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;gap:1px}
+.sc{background:var(--bg);padding:40px 36px;transition:background .2s}
+.sc:hover{background:var(--faint)}
+.sc-val{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--white);line-height:1;margin-bottom:10px}
+.sc-val sup{font-family:var(--sans);font-size:22px;color:var(--lime);vertical-align:top;margin-right:2px}
+.sc-lbl{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── TESTIMONIALS ── */
+.rating-top{display:flex;align-items:center;gap:44px;padding:36px;border:1px solid var(--line);border-radius:10px 10px 0 0;background:var(--faint);border-bottom:none}
+.r-big{font-family:var(--serif);font-size:68px;font-weight:300;color:var(--white);line-height:1;flex-shrink:0}
+.r-stars{display:flex;gap:4px;margin-bottom:8px}
+.star{width:14px;height:14px;background:var(--lime);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.r-info{font-size:12px;color:var(--muted)}
+.rbar-list{flex:1;display:flex;flex-direction:column;gap:7px}
+.rbar-row{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted)}
+.rbar-t{flex:1;height:3px;background:var(--line2);border-radius:2px;overflow:hidden}
+.rbar-f{height:100%;background:var(--lime);border-radius:2px}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;overflow:hidden}
+.tc{background:var(--bg);padding:34px 30px;transition:background .2s}
+.tc:hover{background:var(--s2)}
+.tc-stars{display:flex;gap:3px;margin-bottom:16px}
+.tc-text{font-size:14px;color:var(--text);line-height:1.8;margin-bottom:26px;font-style:italic}
+.tc-author{display:flex;gap:12px;align-items:center}
+.tc-av{width:36px;height:36px;border-radius:50%;background:var(--faint);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--lime);flex-shrink:0}
+.tc-name{font-size:13px;color:var(--white);font-weight:600}
+.tc-role{font-size:11px;color:var(--muted);margin-top:2px}
+.tc-check{font-size:10px;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+
+/* ── PRICING ── */
+.price-layout{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start}
+.pl-left h2{font-family:var(--serif);font-size:clamp(32px,4vw,50px);font-weight:300;color:var(--white);line-height:1.08;letter-spacing:-.022em;margin:12px 0 20px}
+.pl-left p{font-size:15px;color:var(--muted);line-height:1.8;max-width:400px;margin-bottom:36px}
+.inc-list{border-top:1px solid var(--line)}
+.ir{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--text)}
+.ib{width:18px;height:18px;border:1px solid var(--lime);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ib::after{content:'';width:9px;height:5px;border-left:1.5px solid var(--lime);border-bottom:1.5px solid var(--lime);transform:rotate(-45deg) translateY(-1px);display:block}
+
+.price-card{background:var(--s1);border:1px solid var(--line2);border-radius:12px;overflow:hidden;position:sticky;top:72px}
+.pc-top{padding:30px 30px 24px;border-bottom:1px solid var(--line)}
+.pc-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.pc-was{font-size:13px;color:var(--muted);text-decoration:line-through;margin-bottom:4px}
+.pc-price{font-family:var(--serif);font-size:66px;font-weight:300;color:var(--white);line-height:1;margin-bottom:6px;letter-spacing:-.02em}
+.pc-price sup{font-family:var(--sans);font-size:20px;vertical-align:super;color:var(--muted);margin-right:2px}
+.pc-type{font-size:12px;color:var(--muted)}
+.pc-body{padding:22px 30px 28px}
+.promo{background:rgba(198,255,0,.06);border:1px solid rgba(198,255,0,.18);border-radius:var(--r);padding:12px 16px;font-size:12px;color:var(--lime);margin-bottom:18px;letter-spacing:.04em}
+.btn-buy{display:block;width:100%;background:var(--lime);color:#000;border:none;border-radius:var(--r);padding:17px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background .18s,transform .15s;margin-bottom:12px}
+.btn-buy:hover{background:#d4ff26;transform:translateY(-1px)}
+.pay-note{font-size:11px;color:var(--muted);text-align:center;line-height:1.8}
+.pay-note a{color:var(--muted);text-decoration:underline}
+.guar{border-top:1px solid var(--line);padding:20px 30px;display:flex;gap:14px;align-items:flex-start}
+.g-badge{border:1px solid var(--line2);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);flex-shrink:0}
+.g-txt{font-size:12px;color:var(--muted);line-height:1.65}
+.g-txt strong{color:var(--text)}
+
+/* ── FAQ ── */
+.faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 72px}
+.faq-item{border-bottom:1px solid var(--line);padding:22px 0}
+.faq-item:first-child{border-top:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;color:var(--white);font-family:var(--sans);font-size:14px;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:0}
+.faq-icon{width:22px;height:22px;border:1px solid var(--line2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:var(--muted);transition:all .2s}
+.faq-item.open .faq-icon{border-color:var(--lime);color:var(--lime);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{font-size:13px;color:var(--muted);line-height:1.8;padding-top:16px}
+.faq-item.open .faq-a{max-height:220px}
+
+/* ── FINAL ── */
+.final{padding:120px 0;border-bottom:none;text-align:center;position:relative;overflow:hidden}
+.final::before{content:'';position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(198,255,0,.05) 0%,transparent 70%);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+.final h2{font-family:var(--serif);font-size:clamp(40px,5vw,72px);font-weight:300;color:var(--white);line-height:1.06;letter-spacing:-.025em;margin-bottom:20px;position:relative}
+.final h2 em{font-style:italic;color:var(--lime)}
+.final p{font-size:15px;color:var(--muted);margin-bottom:44px}
+.final-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.final-note{margin-top:20px;font-size:12px;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line);padding:36px 0;background:var(--faint)}
+.fi{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fc{font-size:12px;color:var(--muted)}
+.fl{display:flex;gap:24px}
+.fl a{font-size:12px;color:var(--muted);transition:color .2s}
+.fl a:hover{color:var(--text)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.rv.vi{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .price-layout{grid-template-columns:1fr}
+  .price-card{position:static}
+  .specs{grid-template-columns:repeat(2,1fr)}
+  .tgrid{grid-template-columns:1fr}
+  .faq-cols{grid-template-columns:1fr}
+  .ba-wrap{grid-template-columns:1fr}
+  .ba-col.before{border-right:none;border-bottom:1px solid var(--line)}
+  .pain-grid{grid-template-columns:1fr}
+  .hw-grid{grid-template-columns:1fr}
+  .rating-top{flex-direction:column;align-items:flex-start;gap:20px}
+}
+@media(max-width:600px){
+  .container{padding:0 20px}
+  section{padding:64px 0}
+  .hero{padding:72px 0 56px}
+  .specs{grid-template-columns:1fr 1fr}
+  nav{display:none}
+  .hero-trust{flex-wrap:wrap;gap:20px}
+  .ct-head,.ct-row{grid-template-columns:2fr 1fr 1fr}
+  .ct-col:nth-child(3),.ct-fmt{display:none}
+  .final-btns{flex-direction:column;align-items:center}
+  .cat-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="bar">
+  Oferta de lançamento <b>—</b> 50% OFF por tempo limitado <b>—</b> <span id="cd" style="font-variant-numeric:tabular-nums">01:59:59</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="hinner">
+      <div class="logo">EFX<span class="logo-dot">.</span>PACK</div>
+      <nav>
+        <a href="#problema">Por que você precisa</a>
+        <a href="#conteudo">O que tem</a>
+        <a href="#depoimentos">Avaliações</a>
+        <a href="#preco">Preço</a>
+      </nav>
+      <a href="#preco" class="btn bp">Comprar agora</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════ HERO ════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span class="pill">Pack profissional para músicos</span>
+          <span class="lbl">+3.800 produtores</span>
+        </div>
+
+        <h1>A biblioteca de sons que vai <em>mudar</em> o seu próximo projeto.</h1>
+
+        <p class="hero-sub">
+          Você está no meio de uma produção. Precisa de um som que feche a ideia. Você gasta <b>horas procurando</b> o sample certo — e ainda assim não acha. <b>Esse pack resolve isso de uma vez por todas.</b>
+        </p>
+
+        <div class="hero-actions">
+          <a href="#preco" class="btn bp" style="padding:16px 32px;font-size:13px">Quero o pack agora — R$ 97</a>
+          <a href="#conteudo" class="btn bg" style="padding:15px 26px;font-size:13px">Ver o que está incluído</a>
+        </div>
+
+        <div class="hero-trust">
+          <div><div style="font-size:24px;font-weight:700;color:var(--white)">5.000+</div><div class="trust-l">Arquivos incluídos</div></div>
+          <div><div style="font-size:24px;font-weight:700;color:var(--white)">32+</div><div class="trust-l">Categorias</div></div>
+          <div><div style="font-size:24px;font-weight:700;color:var(--white)">4.9★</div><div class="trust-l">Avaliação média</div></div>
+          <div><div style="font-size:24px;font-weight:700;color:var(--white)">100%</div><div class="trust-l">Royalty Free</div></div>
+        </div>
+      </div>
+
+      <div class="mockup">
+        <div class="float-pill">
+          <strong>4.9 / 5.0</strong>1.247 avaliações verificadas
+        </div>
+        <div class="pack-box">
+          <div class="pb-top">
+            <span class="pb-name">EFX Pack — Edição Completa</span>
+            <span class="pb-badge">v2.0</span>
+          </div>
+          <div class="wave-area" id="hw"></div>
+          <div class="cat-grid">
+            <div class="cat-row"><span class="cat-n">Transições & FX</span><span class="cat-c">180+</span></div>
+            <div class="cat-row"><span class="cat-n">Loops de Bateria</span><span class="cat-c">320+</span></div>
+            <div class="cat-row"><span class="cat-n">Teclado</span><span class="cat-c">200+</span></div>
+            <div class="cat-row"><span class="cat-n">Violão & Guitarra</span><span class="cat-c">150+</span></div>
+            <div class="cat-row"><span class="cat-n">Pisadinha</span><span class="cat-c">280+</span></div>
+            <div class="cat-row"><span class="cat-n">Trombeta & Metais</span><span class="cat-c">90+</span></div>
+          </div>
+          <div class="pb-foot">
+            <span class="pb-fmt">WAV · 24-bit · 44.1kHz</span>
+            <span class="pb-tot">+5.000 arquivos</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="t-track">
+    <div class="t-item"><b>Royalty Free</b>uso comercial liberado</div>
+    <div class="t-item"><b>Entrega imediata</b>acesso em segundos</div>
+    <div class="t-item"><b>WAV 24-bit</b>qualidade de estúdio</div>
+    <div class="t-item"><b>Compatível</b>FL Studio · Ableton · Logic</div>
+    <div class="t-item"><b>Garantia</b>7 dias ou dinheiro de volta</div>
+    <div class="t-item"><b>3.800+</b>produtores ativos no Brasil</div>
+    <div class="t-item"><b>Atualizações</b>incluídas para sempre</div>
+    <div class="t-item"><b>Royalty Free</b>uso comercial liberado</div>
+    <div class="t-item"><b>Entrega imediata</b>acesso em segundos</div>
+    <div class="t-item"><b>WAV 24-bit</b>qualidade de estúdio</div>
+    <div class="t-item"><b>Compatível</b>FL Studio · Ableton · Logic</div>
+    <div class="t-item"><b>Garantia</b>7 dias ou dinheiro de volta</div>
+    <div class="t-item"><b>3.800+</b>produtores ativos no Brasil</div>
+    <div class="t-item"><b>Atualizações</b>incluídas para sempre</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════ SEÇÃO DE DOR ════════════════════════════ -->
+<section id="problema" class="pain-section">
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">O problema que todo músico conhece</span>
+      <h2>Você produz bem.<br>Mas <em>esses momentos</em> travam tudo.</h2>
+      <p>Reconhece alguma dessas situações? A maioria dos músicos brasileiros passa por isso todo dia — e continua perdendo tempo e oportunidade.</p>
+    </div>
+    <div class="pain-grid rv">
+      <div class="pain-cell">
+        <div class="pain-label">Problema 01</div>
+        <div class="pain-title">"Fico horas procurando um sample e não acho o que quero"</div>
+        <div class="pain-body">Você abre o YouTube, o Google, vai de site em site. Baixa arquivo, não serve. Baixa outro, qualidade ruim. A música fica parada enquanto você <b>desperdiça seu tempo mais criativo</b> garimpando som.</div>
+      </div>
+      <div class="pain-cell">
+        <div class="pain-label">Problema 02</div>
+        <div class="pain-title">"Os samples que acho não têm qualidade para uso profissional"</div>
+        <div class="pain-body">Aquele loop gratuito que parecia bom no preview soa fraco na mixagem. A transição que você achou no site aleatório tem <b>ruído de fundo, frequência errada</b> ou simplesmente não encaixa.</div>
+      </div>
+      <div class="pain-cell">
+        <div class="pain-label">Problema 03</div>
+        <div class="pain-title">"Não tenho variedade — uso sempre os mesmos sons"</div>
+        <div class="pain-body">Sua biblioteca tem o básico. Bateria, alguns loops. Mas quando o projeto pede algo específico — uma trombeta, um som de natureza, um FX engraçado — você <b>não tem de onde tirar</b>.</div>
+      </div>
+      <div class="pain-cell">
+        <div class="pain-label">Problema 04</div>
+        <div class="pain-title">"Tenho medo de usar samples e ter problema de direitos"</div>
+        <div class="pain-body">Você encontra um som incrível mas não sabe se pode usar comercialmente. Não quer arriscar ter o projeto derrubado, levar strike ou perder monetização. <b>A dúvida paralisa a criação.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════ ANTES / DEPOIS ══════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">A transformação</span>
+      <h2>Como fica sua produção<br><em>antes</em> e depois do pack.</h2>
+      <p>Não é sobre ter mais arquivos. É sobre como você trabalha, o que você entrega e o tempo que você ganha.</p>
+    </div>
+    <div class="ba-wrap rv">
+      <div class="ba-col before">
+        <span class="ba-tag">Sem o EFX Pack</span>
+        <div class="ba-list">
+          <div class="ba-item"><span class="ba-mark">—</span><span>Horas de pesquisa pra achar um sample razoável</span></div>
+          <div class="ba-item"><span class="ba-mark">—</span><span>Qualidade inconsistente, arquivos com ruído e frequência errada</span></div>
+          <div class="ba-item"><span class="ba-mark">—</span><span>Sem variedade: sempre os mesmos sons, mesma identidade sonora</span></div>
+          <div class="ba-item"><span class="ba-mark">—</span><span>Insegurança sobre direitos autorais em projetos comerciais</span></div>
+          <div class="ba-item"><span class="ba-mark">—</span><span>Produção travada enquanto você busca o som que falta</span></div>
+          <div class="ba-item"><span class="ba-mark">—</span><span>Dificuldade de entregar projetos com diversidade sonora</span></div>
+        </div>
+      </div>
+      <div class="ba-col after">
+        <span class="ba-tag">Com o EFX Pack</span>
+        <div class="ba-list">
+          <div class="ba-item"><span class="ba-mark">+</span><span>O som que você precisa está a segundos de distância — organizado por categoria</span></div>
+          <div class="ba-item"><span class="ba-mark">+</span><span>WAV 24-bit / 44.1kHz: qualidade de estúdio em todos os 5.000+ arquivos</span></div>
+          <div class="ba-item"><span class="ba-mark">+</span><span>32 categorias cobrindo pisadinha, forró, FX, natureza, humor, metais e muito mais</span></div>
+          <div class="ba-item"><span class="ba-mark">+</span><span>100% Royalty Free: use em qualquer projeto comercial sem medo</span></div>
+          <div class="ba-item"><span class="ba-mark">+</span><span>Fluxo de produção rápido, criativo e sem interrupções</span></div>
+          <div class="ba-item"><span class="ba-mark">+</span><span>Projetos com personalidade sonora forte e acabamento profissional</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ O QUE TEM DENTRO ═══════════════════════════ -->
+<section id="conteudo" style="background:var(--s1)">
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">Conteúdo completo</span>
+      <h2>Tudo que você precisa,<br>em um único lugar.</h2>
+      <p>Cada categoria pensada para cobrir os principais gêneros, momentos e situações da produção musical brasileira — do estúdio ao palco.</p>
+    </div>
+    <div class="ct-wrap rv">
+      <div class="ct-head">
+        <div class="ct-col">Categoria</div>
+        <div class="ct-col">Arquivos</div>
+        <div class="ct-col">Formato</div>
+        <div class="ct-col">Tipo</div>
+      </div>
+      <div class="ct-row"><div><div class="ct-name">Transições & FX</div><div class="ct-desc">Whooshes, risers, sweeps, downlifters, impactos cinemáticos</div></div><div class="ct-num">180+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag h">Popular</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Loops de Bateria</div><div class="ct-desc">Samba, funk, baião, trap, eletrônico, pagode, forró, gospel</div></div><div class="ct-num">320+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag h">Popular</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Teclado</div><div class="ct-desc">Acordes, melodias, intros, solos — do MPB ao pop eletrônico</div></div><div class="ct-num">200+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag">Loop</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Violão & Guitarra</div><div class="ct-desc">Batidas acústicas, riffs, solos elétricos, arpejos</div></div><div class="ct-num">150+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag">Loop</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Cortes & Toques</div><div class="ct-desc">Stingers, hits secos, toques de atenção, fills de impacto</div></div><div class="ct-num">400+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag">One-shot</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Pisadinha</div><div class="ct-desc">Loops e one-shots do ritmo que domina o Brasil atualmente</div></div><div class="ct-num">280+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag h">Popular</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Trombeta & Metais</div><div class="ct-desc">Fanfarras, solos, naipes completos, hits de trombeta</div></div><div class="ct-num">90+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag">One-shot</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Momentos Cômicos</div><div class="ct-desc">Cartoon sounds, humor, bloops, efeitos de comédia</div></div><div class="ct-num">220+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag n">Novo</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">Natureza & Animais</div><div class="ct-desc">Pássaros, chuva, vento, floresta tropical, oceano</div></div><div class="ct-num">180+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag n">Novo</span></div></div>
+      <div class="ct-row"><div><div class="ct-name">FX Especiais</div><div class="ct-desc">Impactos, explosões, texturas, UI sounds, efeitos sonoros</div></div><div class="ct-num">500+</div><div class="ct-fmt">WAV 24bit</div><div><span class="ct-tag">One-shot</span></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ COMO FUNCIONA ═══════════════════════════ -->
+<section class="hw-section">
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">Na prática</span>
+      <h2>Do pagamento ao<br>uso em <em>minutos</em>.</h2>
+      <p>Sem cadastro complicado, sem espera. Você compra e já começa a usar na sua próxima sessão.</p>
+    </div>
+    <div class="hw-grid rv">
+      <div class="hw-cell">
+        <div class="hw-step">01</div>
+        <div class="hw-title">Você compra — acesso imediato</div>
+        <div class="hw-body">Pagou via PIX, cartão ou boleto? O link de download chega no e-mail em segundos. Sem espera, sem fila, sem processo de aprovação.</div>
+      </div>
+      <div class="hw-cell">
+        <div class="hw-step">02</div>
+        <div class="hw-title">Baixa, extrai e organiza</div>
+        <div class="hw-body">Todos os arquivos já vêm organizados em pastas por categoria, com nome e BPM identificados. Você encontra qualquer som em segundos — não em minutos.</div>
+      </div>
+      <div class="hw-cell">
+        <div class="hw-step">03</div>
+        <div class="hw-title">Arrasta para a DAW e produz</div>
+        <div class="hw-body">WAV universal. Funciona em FL Studio, Ableton, Logic, GarageBand, Reaper — qualquer software que você já usa. Sem conversão, sem configuração.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SPECS -->
+<section>
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">Especificações técnicas</span>
+      <h2>Qualidade que você<br>sente na mixagem.</h2>
+    </div>
+    <div class="specs rv">
+      <div class="sc"><div class="sc-val">5<sup>mil</sup></div><div class="sc-lbl">Arquivos de samples, loops e one-shots incluídos no pack</div></div>
+      <div class="sc"><div class="sc-val">24<sup>bit</sup></div><div class="sc-lbl">Profundidade de bits — dinâmica e headroom profissionais</div></div>
+      <div class="sc"><div class="sc-val">44<sup>kHz</sup></div><div class="sc-lbl">Taxa de amostragem padrão de estúdio em todos os arquivos</div></div>
+      <div class="sc"><div class="sc-val">32<sup>+</sup></div><div class="sc-lbl">Categorias com nomenclatura clara e BPM identificado</div></div>
+      <div class="sc"><div class="sc-val">100<sup>%</sup></div><div class="sc-lbl">Royalty Free — uso comercial liberado, sem taxas futuras</div></div>
+      <div class="sc"><div class="sc-val">7<sup>d</sup></div><div class="sc-lbl">Garantia incondicional — reembolso total sem perguntas</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ TESTIMONIALS ═══════════════════════════ -->
+<section id="depoimentos" style="background:var(--s1)">
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">Quem já usa</span>
+      <h2>3.800 músicos brasileiros<br>que pararam de procurar sons.</h2>
+    </div>
+    <div class="rv">
+      <div class="rating-top">
+        <div class="r-big">4.9</div>
+        <div>
+          <div class="r-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <div class="r-info">Baseado em 1.247 compras verificadas</div>
+        </div>
+        <div class="rbar-list">
+          <div class="rbar-row"><span style="min-width:18px;text-align:right">5</span><div class="rbar-t"><div class="rbar-f" style="width:91%"></div></div><span>91%</span></div>
+          <div class="rbar-row"><span style="min-width:18px;text-align:right">4</span><div class="rbar-t"><div class="rbar-f" style="width:7%"></div></div><span>7%</span></div>
+          <div class="rbar-row"><span style="min-width:18px;text-align:right">3</span><div class="rbar-t"><div class="rbar-f" style="width:2%"></div></div><span>2%</span></div>
+        </div>
+      </div>
+      <div class="tgrid">
+        <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tc-text">"Antes eu gastava horas procurando sample no YouTube. Hoje abro a pasta, acho em segundos e já arrasto pro FL Studio. Minha produtividade dobrou."</p><div class="tc-author"><div class="tc-av">LM</div><div><div class="tc-name">Lucas Monteiro</div><div class="tc-role">Produtor Musical — São Paulo</div><div class="tc-check">Compra verificada</div></div></div></div>
+        <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tc-text">"Os loops de pisadinha e forró são exatamente o que o mercado nordestino pede. Qualidade muito acima do que eu achava de graça. Valeu cada centavo."</p><div class="tc-author"><div class="tc-av">AG</div><div><div class="tc-name">Ana Gabriela</div><div class="tc-role">DJ & Produtora — Salvador</div><div class="tc-check">Compra verificada</div></div></div></div>
+        <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tc-text">"Usei os metais e a trombeta numa trilha profissional. O cliente ficou impressionado. Ele não imaginou que veio de um pack — achou que eu tinha gravado ao vivo."</p><div class="tc-author"><div class="tc-av">PL</div><div><div class="tc-name">Paulo Lima</div><div class="tc-role">Compositor de Trilhas — Porto Alegre</div><div class="tc-check">Compra verificada</div></div></div></div>
+        <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tc-text">"Editava vídeos e não conseguia achar sons cômicos de qualidade. Agora tenho mais de 200 opções organizadas. Meu canal cresceu porque o áudio ficou outro nível."</p><div class="tc-author"><div class="tc-av">RB</div><div><div class="tc-name">Rodrigo Brandão</div><div class="tc-role">Editor & Creator — Rio de Janeiro</div><div class="tc-check">Compra verificada</div></div></div></div>
+        <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tc-text">"Trabalho com trilhas para documentários. Os sons de natureza e animais são incrivelmente realistas. Economizei horas de gravação de campo com isso."</p><div class="tc-author"><div class="tc-av">FC</div><div><div class="tc-name">Fernanda Costa</div><div class="tc-role">Compositora — Belo Horizonte</div><div class="tc-check">Compra verificada</div></div></div></div>
+        <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tc-text">"Passei anos tentando montar uma biblioteca decente. Esse pack me deu de uma vez o que levaria anos para coletar. Uma das melhores decisões que já tomei na produção."</p><div class="tc-author"><div class="tc-av">DS</div><div><div class="tc-name">Diego Santos</div><div class="tc-role">Beatmaker — Fortaleza</div><div class="tc-check">Compra verificada</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ PRICING ═══════════════════════════ -->
+<section id="preco">
+  <div class="container">
+    <div class="price-layout rv">
+
+      <div class="pl-left">
+        <span class="lbl">Investimento</span>
+        <h2>Uma compra.<br>Uma biblioteca para a vida.</h2>
+        <p>Sem mensalidade, sem assinatura, sem limite de uso. Você paga uma vez e tem acesso a tudo — para sempre — em todos os seus projetos.</p>
+        <p style="margin-top:16px;font-size:14px;color:var(--muted)">Pense assim: a maioria dos músicos gasta mais do que R$ 97 por mês procurando sons, comprando samples avulsos ou assinando plataformas. Com este pack, você resolve tudo de uma vez, com qualidade superior.</p>
+
+        <div class="inc-list" style="margin-top:32px">
+          <div class="ir"><div class="ib"></div>+5.000 samples, loops e one-shots em WAV 24-bit</div>
+          <div class="ir"><div class="ib"></div>32 categorias organizadas — bateria, teclado, violão, guitarra, pisadinha, trombeta, FX, humor, natureza e mais</div>
+          <div class="ir"><div class="ib"></div>100% Royalty Free — uso comercial liberado sem qualquer restrição</div>
+          <div class="ir"><div class="ib"></div>Compatível com FL Studio, Ableton, Logic, GarageBand e qualquer DAW</div>
+          <div class="ir"><div class="ib"></div>Entrega imediata por e-mail após confirmação do pagamento</div>
+          <div class="ir"><div class="ib"></div>Atualizações futuras incluídas — sem custo adicional jamais</div>
+          <div class="ir"><div class="ib"></div>Garantia incondicional de 7 dias — reembolso total sem perguntas</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="price-card">
+          <div class="pc-top">
+            <div class="pc-lbl">EFX Pack — Edição Completa</div>
+            <div class="pc-was">R$ 197,00</div>
+            <div class="pc-price"><sup>R$</sup>97</div>
+            <div class="pc-type">pagamento único · acesso vitalício</div>
+          </div>
+          <div class="pc-body">
+            <div class="promo">Oferta de lançamento — 50% de desconto aplicado</div>
+            <a href="#" class="btn-buy">Adquirir agora</a>
+            <div class="pay-note">
+              Pagamento seguro via PIX, cartão ou boleto<br>
+              <a href="#">Política de privacidade</a> · <a href="#">Termos de uso</a>
+            </div>
+          </div>
+          <div class="guar">
+            <div class="g-badge">7d</div>
+            <div class="g-txt"><strong>Garantia incondicional de 7 dias.</strong> Não ficou satisfeito com o pack? Devolvemos 100% do valor. Sem perguntas, sem burocracia.</div>
+          </div>
+        </div>
+
+        <!-- Urgency note below card -->
+        <div style="margin-top:16px;padding:16px 20px;background:var(--faint);border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:var(--muted);line-height:1.7">
+          O preço de R$ 97 é válido somente durante o lançamento. Após esse período, o pack volta ao preço original de R$ 197. Garante agora com o desconto.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
+<section id="faq" style="background:var(--s1)">
+  <div class="container">
+    <div class="sh rv">
+      <span class="lbl">Dúvidas frequentes</span>
+      <h2>Perguntas e respostas.</h2>
+    </div>
+    <div class="faq-cols rv">
+      <div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Como recebo o pack após a compra? <span class="faq-icon">+</span></button><div class="faq-a"><p>Imediatamente após a confirmação do pagamento você recebe um e-mail com o link de download. PIX é aprovado na hora. Cartão pode levar poucos minutos.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Posso usar em projetos comerciais sem problemas? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. Todos os samples são 100% Royalty Free. Use em músicas, vídeos no YouTube, Spotify, podcasts, trilhas, comerciais e qualquer projeto que gere renda — sem taxas adicionais, agora ou no futuro.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Funciona no meu software de produção? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. Todos os arquivos estão em WAV — formato universal. FL Studio, Ableton Live, Logic Pro, GarageBand, Reaper, Studio One, DaVinci Resolve — qualquer software reconhece e abre.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Os arquivos são organizados? Como vou achar o que preciso? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. Cada categoria tem sua própria pasta. Os arquivos são nomeados de forma intuitiva, com BPM e tipo identificados. Você encontra o que precisa em segundos, não em minutos.</p></div></div>
+      </div>
+      <div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">E se eu não gostar do pack? <span class="faq-icon">+</span></button><div class="faq-a"><p>Garantia de 7 dias sem burocracia. Entre em contato por e-mail e devolvemos 100% do valor. Sem perguntas.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Quais são as formas de pagamento? <span class="faq-icon">+</span></button><div class="faq-a"><p>Aceitamos PIX (aprovação imediata), cartão de crédito em até 12 parcelas e boleto bancário. Toda transação é processada com segurança total.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Recebo atualizações futuras? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. Sempre que lançarmos novas categorias ou arquivos, todos os clientes recebem automaticamente, sem nenhum custo adicional. Uma compra, biblioteca que cresce com você.</p></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="faq(this)">Consigo baixar tudo de uma vez? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sim. O pack completo vem em um arquivo comprimido. Um download, tudo dentro. Pode baixar no celular, computador ou tablet.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════ FINAL CTA ════════════════════════════ -->
+<section class="final">
+  <div class="container">
+    <div class="rv">
+      <h2>Chega de procurar.<br><em>Comece a criar.</em></h2>
+      <p>Sua próxima produção merece sons à altura do seu talento.</p>
+      <div class="final-btns">
+        <a href="#preco" class="btn bp" style="padding:18px 44px;font-size:14px">Adquirir o pack — R$ 97</a>
+        <a href="#conteudo" class="btn bg" style="padding:17px 32px;font-size:13px">Ver conteúdo completo</a>
+      </div>
+      <p class="final-note">Garantia de 7 dias · Entrega imediata · 100% Royalty Free · Uma compra para sempre</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fi">
+      <div class="fc">2025 EFX Pack — Todos os direitos reservados.</div>
+      <div class="fl">
+        <a href="#">Política de privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Suporte</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* WAVEFORM */
+const hw = document.getElementById('hw');
+for (let i = 0; i < 62; i++) {
+  const b = document.createElement('div');
+  b.className = 'wb';
+  const c = Math.abs(i - 31) / 31;
+  const mx = (1 - c * .6) * 70 + 10;
+  const mn = mx * .22;
+  b.style.cssText = `--a:${mn}px;--b:${mx}px;--d:${.5 + Math.random() * .95}s`;
+  b.style.animationDelay = Math.random() * 1.8 + 's';
+  const p = i / 62;
+  if (p > .25 && p < .75) b.classList.add(Math.random() > .45 ? 'on' : 'lo');
+  hw.appendChild(b);
+}
+
+/* COUNTDOWN */
+let secs = 7199;
+const cdEl = document.getElementById('cd');
+setInterval(() => {
+  if (--secs < 0) secs = 7199;
+  const h = String(Math.floor(secs / 3600)).padStart(2, '0');
+  const m = String(Math.floor(secs % 3600 / 60)).padStart(2, '0');
+  const s = String(secs % 60).padStart(2, '0');
+  cdEl.textContent = `${h}:${m}:${s}`;
+}, 1000);
+
+/* FAQ */
+function faq(btn) {
+  btn.parentElement.classList.toggle('open');
+}
+
+/* REVEAL */
+const obs = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('vi')), { threshold: .1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
